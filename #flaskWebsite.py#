@@ -1,0 +1,40 @@
+from flask import Flask, jsonify
+from time import strftime
+app = Flask(__name__)
+TEMPLOG_DIR = "temperatureLogs"
+DATE_FORMAT = "%Y%m%d"
+
+#index page. Base of app. Return html
+@app.route('/')
+def index():
+    return 'Hello Index page!!'
+
+#javascript pages
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('js', path)
+
+#API endpoint
+@app.route('/temps/<int:hours>', methods=['GET'])
+def return_temps(hours):
+    return 'Parsed Hours %d' % hours
+
+@app.route('/temps/test', methods=['GET'])
+def temps_test():
+    lines = get_temps(0)
+    jsonData = []
+    for line in lines:
+        items = line.split(',')
+        jsonData.append({
+            'timeStamp': items[0],
+            'outTemp': items[1],
+            'inTemp': items[2]
+        })
+
+    return jsonify({'loggedTemps' : jsonData})
+
+#get file data as lines method
+        
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host='0.0.0.0')
