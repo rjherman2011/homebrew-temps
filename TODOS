@@ -1,0 +1,7 @@
+1) Switch file system logging to use database logging
+  a) Script files into database
+
+2) Fix multiple day issue (should be fixed by database addition)
+
+3) Script out creation of pi
+  a) Script out python imports
