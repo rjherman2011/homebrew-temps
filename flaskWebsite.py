@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, render_template, send_from_directory
 from time import strftime
-from lib.fileHelper import get_temps
+from lib.dbHelper import get_temps
 app = Flask(__name__)
 
 #index page. Base of app. Return html

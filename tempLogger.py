@@ -1,4 +1,4 @@
-import lib.fileHelper
+import lib.dbHelper
 import smbus
 
 #SMBus(0) - Model B
@@ -27,4 +27,4 @@ def get_current_temps():
     inTemp = celciusToFahrenheit(temperature(address2))
     return [outTemp,inTemp]
 
-lib.fileHelper.log_temps(get_current_temps())
+lib.dbHelper.log_temps(get_current_temps())
