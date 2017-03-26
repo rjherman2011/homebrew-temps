@@ -30,6 +30,7 @@ def log_temps(tempTuple):
         if not fileExists:
             file.write("#format: Date/Time, OutsideTemp, InsideTemp\n")
         data = strftime(ISO_FORMAT) + "," + str(tempTuple[0]) + "," + str(tempTuple[1]) + "\n"
+
         file.write(data)
     
 def get_filename():
